@@ -1,0 +1,7 @@
+{
+  "name": "Sound Strong English AI Coach",
+  "description": "赫穠教育文化專屬 AI 發音教練，專為台灣學習者設計的 Phonics 與語音辨識糾錯系統。",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
