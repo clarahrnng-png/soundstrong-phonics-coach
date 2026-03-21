@@ -30,25 +30,6 @@ const App: React.FC = () => {
   const [showAchievements, setShowAchievements] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [lastError, setLastError] = useState<string | null>(null);
-  const [isKeySelected, setIsKeySelected] = useState<boolean>(true);
-
-  // Check for API key selection on mount
-  useEffect(() => {
-    const checkKey = async () => {
-      if (window.aistudio && typeof window.aistudio.hasSelectedApiKey === 'function') {
-        const selected = await window.aistudio.hasSelectedApiKey();
-        setIsKeySelected(selected);
-      }
-    };
-    checkKey();
-  }, []);
-
-  const handleOpenSelectKey = async () => {
-    if (window.aistudio && typeof window.aistudio.openSelectKey === 'function') {
-      await window.aistudio.openSelectKey();
-      setIsKeySelected(true); // Assume success after opening dialog
-    }
-  };
 
   // Gamification State
   const [progress, setProgress] = useState<UserProgress>(() => {
@@ -172,31 +153,18 @@ const App: React.FC = () => {
     }
 
     try {
-      // Use GEMINI_API_KEY as primary, fallback to API_KEY
-      const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY;
-      
+      // Use the injected API_KEY exclusively from process.env
+      const apiKey = process.env.API_KEY;
       if (!apiKey) {
-        if (window.aistudio) {
-          await handleOpenSelectKey();
-          return; // Stop and wait for user to try again after selecting key
-        }
         throw new Error('API Key is missing. Please check your environment configuration.');
       }
-      
       const ai = new GoogleGenAI({ apiKey });
       
       if (!audioContextRef.current) {
         audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 16000 });
       }
-      if (audioContextRef.current.state === 'suspended') {
-        await audioContextRef.current.resume();
-      }
-
       if (!outputAudioContextRef.current) {
         outputAudioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
-      }
-      if (outputAudioContextRef.current.state === 'suspended') {
-        await outputAudioContextRef.current.resume();
       }
 
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -310,20 +278,7 @@ const App: React.FC = () => {
           },
           onerror: (e) => {
             console.error('Gemini error:', e);
-            let errorMessage = '連線發生錯誤 (Network Error)';
-            if (e instanceof Error) {
-              errorMessage = e.message;
-            } else if (typeof e === 'object' && e !== null) {
-              errorMessage = JSON.stringify(e);
-            }
-            
-            // If it's a 404 or "not found", it might be a key issue
-            if (errorMessage.includes('Requested entity was not found') || errorMessage.includes('404')) {
-              setIsKeySelected(false);
-              errorMessage = '找不到資源，請重新選擇 API Key。';
-            }
-
-            setLastError(errorMessage);
+            setLastError(e instanceof Error ? e.message : String(e));
             cleanup();
           },
           onclose: () => {
