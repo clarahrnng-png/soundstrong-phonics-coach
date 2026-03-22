@@ -30,7 +30,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Sheep', word2: 'Ship', targetIpa: '/iː/', comparisonIpa: '/ɪ/' },
       { word1: 'Seat', word2: 'Sit', targetIpa: '/iː/', comparisonIpa: '/ɪ/' }
     ],
-    sentences: ["I see three sheep.", "Please eat your meat."]
+    sentences: ["I see three sheep.", "Please eat your meat.", "Keep the key in your pocket.", "We need to clean the street."]
   },
   {
     id: 'short-i',
@@ -45,7 +45,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Ship', word2: 'Sheep', targetIpa: '/ɪ/', comparisonIpa: '/iː/' },
       { word1: 'Bin', word2: 'Bean', targetIpa: '/ɪ/', comparisonIpa: '/iː/' }
     ],
-    sentences: ["The ship sits in the dock.", "It is a bit chilly."]
+    sentences: ["The ship sits in the dock.", "It is a bit chilly.", "Fill the bin with fish.", "This ring is a bit big."]
   },
   {
     id: 'short-e',
@@ -60,7 +60,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Bed', word2: 'Bad', targetIpa: '/ɛ/', comparisonIpa: '/æ/' },
       { word1: 'Men', word2: 'Man', targetIpa: '/ɛ/', comparisonIpa: '/æ/' }
     ],
-    sentences: ["Tell me the best test.", "Get the red egg."]
+    sentences: ["Tell me the best test.", "Get the red egg.", "Ten men went to bed.", "Help me set the net."]
   },
   {
     id: 'ae-sound',
@@ -75,7 +75,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Bad', word2: 'Bed', targetIpa: '/æ/', comparisonIpa: '/ɛ/' },
       { word1: 'Had', word2: 'Head', targetIpa: '/æ/', comparisonIpa: '/ɛ/' }
     ],
-    sentences: ["The fat cat sat on the mat.", "That is a bad apple."]
+    sentences: ["The fat cat sat on the mat.", "That is a bad apple.", "The man had a black hat.", "Happy cats nap on bags."]
   },
   {
     id: 'vowel-ah',
@@ -86,7 +86,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '想像醫生叫你說「啊」，舌頭放平。',
     commonMistakes: '嘴巴張得不夠垂直。',
     animationState: 'open',
-    sentences: ["My father has a fast car.", "Look at the star."]
+    sentences: ["My father has a fast car.", "Look at the star.", "Park the car in the dark.", "The heart is a large part."]
   },
   {
     id: 'vowel-aw',
@@ -97,7 +97,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '聲音從喉嚨後方發出，帶一點長音。',
     commonMistakes: '常唸成 /oʊ/。',
     animationState: 'rounded',
-    sentences: ["I saw the door open.", "The law is for all."]
+    sentences: ["I saw the door open.", "The law is for all.", "Paul bought a tall ball.", "The fall was long and raw."]
   },
   {
     id: 'vowel-uh',
@@ -111,7 +111,7 @@ export const PHONEMES: PhonemeInfo[] = [
     minimalPairs: [
       { word1: 'Cup', word2: 'Cap', targetIpa: '/ʌ/', comparisonIpa: '/æ/' }
     ],
-    sentences: ["Sun is up in the sky.", "Good luck with the cup."]
+    sentences: ["Sun is up in the sky.", "Good luck with the cup.", "The duck is in the mud.", "Run for fun in the sun."]
   },
   {
     id: 'short-u',
@@ -126,7 +126,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Look', word2: 'Luke', targetIpa: '/ʊ/', comparisonIpa: '/uː/' },
       { word1: 'Full', word2: 'Fool', targetIpa: '/ʊ/', comparisonIpa: '/uː/' }
     ],
-    sentences: ["Look at that good book.", "He took his foot off."]
+    sentences: ["Look at that good book.", "He took his foot off.", "Put the wood in the hood.", "The cook shook the sugar."]
   },
   {
     id: 'long-u',
@@ -141,7 +141,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Fool', word2: 'Full', targetIpa: '/uː/', comparisonIpa: '/ʊ/' },
       { word1: 'Pool', word2: 'Pull', targetIpa: '/uː/', comparisonIpa: '/ʊ/' }
     ],
-    sentences: ["The soup is cool and blue.", "Move to the music soon."]
+    sentences: ["The soup is cool and blue.", "Move to the music soon.", "The goose flew to the pool.", "Use the spoon for the food."]
   },
   {
     id: 'vowel-er',
@@ -152,7 +152,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '舌尖微微向上捲，發出帶有 R 感的長音。',
     commonMistakes: '舌頭捲得太後面或沒捲舌。',
     animationState: 'neutral',
-    sentences: ["The nurse is at work.", "Early bird gets the worm."]
+    sentences: ["The nurse is at work.", "Early bird gets the worm.", "Her shirt is dirty.", "Learn the first word."]
   },
 
   // --- DIPHTHONGS (6) ---
@@ -169,7 +169,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Wait', word2: 'Wet', targetIpa: '/eɪ/', comparisonIpa: '/ɛ/' },
       { word1: 'Late', word2: 'Let', targetIpa: '/eɪ/', comparisonIpa: '/ɛ/' }
     ],
-    sentences: ["Wait for the rain today.", "They play all day."]
+    sentences: ["Wait for the rain today.", "They play all day.", "Say the name on the cake.", "The train came late."]
   },
   {
     id: 'ai-diphthong',
@@ -183,7 +183,7 @@ export const PHONEMES: PhonemeInfo[] = [
     minimalPairs: [
       { word1: 'Ride', word2: 'Red', targetIpa: '/aɪ/', comparisonIpa: '/ɛ/' }
     ],
-    sentences: ["The sky is high.", "I like my bike."]
+    sentences: ["The sky is high.", "I like my bike.", "Try the white rice.", "Time to fly the kite."]
   },
   {
     id: 'oi-diphthong',
@@ -194,7 +194,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '嘴唇由圓變扁，流暢滑動。',
     commonMistakes: '兩個音斷開，沒有連在一起。',
     animationState: 'rounded',
-    sentences: ["The boy plays with toys.", "Oil is in the soil."]
+    sentences: ["The boy plays with toys.", "Oil is in the soil.", "Enjoy the joy of the voice.", "Point to the coin."]
   },
   {
     id: 'au-diphthong',
@@ -208,7 +208,7 @@ export const PHONEMES: PhonemeInfo[] = [
     minimalPairs: [
       { word1: 'Now', word2: 'No', targetIpa: '/aʊ/', comparisonIpa: '/oʊ/' }
     ],
-    sentences: ["Go out of the house.", "The clouds are round."]
+    sentences: ["Go out of the house.", "The clouds are round.", "How about the brown cow?", "Found a mouse on the ground."]
   },
   {
     id: 'ou-diphthong',
@@ -222,7 +222,7 @@ export const PHONEMES: PhonemeInfo[] = [
     minimalPairs: [
       { word1: 'Boat', word2: 'Bought', targetIpa: '/oʊ/', comparisonIpa: '/ɔː/' }
     ],
-    sentences: ["Go home on the boat.", "Don't hold the gold."]
+    sentences: ["Go home on the boat.", "Don't hold the gold.", "Show the low snow.", "The road is cold and old."]
   },
 
   // --- CONSONANTS - PLOSIVES (6) ---
@@ -235,7 +235,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '雙唇緊閉後突然張開，噴出強氣。',
     commonMistakes: '噴氣不夠強，聽起來像 /b/。',
     animationState: 'neutral',
-    sentences: ["A pink pig with a pen.", "Stop at the map."]
+    sentences: ["A pink pig with a pen.", "Stop at the map.", "Pick up the paper cup.", "Put the pot on the top."]
   },
   {
     id: 'b-sound',
@@ -246,7 +246,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '嘴型同 /p/，但發音時聲帶要震動。',
     commonMistakes: '發音太輕。',
     animationState: 'neutral',
-    sentences: ["The big boy has a bag.", "Bring the book."]
+    sentences: ["The big boy has a bag.", "Bring the book.", "The baby has a blue ball.", "Best buy for the boat."]
   },
   {
     id: 't-sound',
@@ -257,7 +257,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '舌尖抵住上齒齦，快速放開並噴氣。',
     commonMistakes: '噴氣不足，聽起來像 /d/。',
     animationState: 'tongue-up',
-    sentences: ["Tell me the time.", "Two cats on the mat."]
+    sentences: ["Tell me the time.", "Two cats on the mat.", "Take the ten tickets.", "Eat the sweet tart."]
   },
   {
     id: 'd-sound',
@@ -268,7 +268,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '位置同 /t/，發音時帶動聲帶震動。',
     commonMistakes: '發音過短。',
     animationState: 'tongue-up',
-    sentences: ["Dad loves the dog.", "Do it today."]
+    sentences: ["Dad loves the dog.", "Do it today.", "Did you find the red door?", "Dance in the dark."]
   },
   {
     id: 'k-sound',
@@ -279,7 +279,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '舌後根抵住軟顎，爆發出清脆氣流。',
     commonMistakes: '噴氣不夠，像 /g/。',
     animationState: 'neutral',
-    sentences: ["Keep the cat back.", "Cook the cake."]
+    sentences: ["Keep the cat back.", "Cook the cake.", "The king has a black key.", "Kick the quick clock."]
   },
   {
     id: 'g-sound',
@@ -290,7 +290,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '位置同 /k/，發音時聲帶震動。',
     commonMistakes: '發音不夠響亮。',
     animationState: 'neutral',
-    sentences: ["Go get the big egg.", "The girl is good."]
+    sentences: ["Go get the big egg.", "The girl is good.", "Give the green gift.", "The dog is big and gray."]
   },
 
   // --- CONSONANTS - FRICATIVES (10) ---
@@ -303,7 +303,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '上齒輕觸下唇，吹出平滑氣流。',
     commonMistakes: '常被唸成 /h/。',
     animationState: 'neutral',
-    sentences: ["Five fast fish.", "The leaf is off."]
+    sentences: ["Five fast fish.", "The leaf is off.", "Fill the four fans.", "Find the soft fluff."]
   },
   {
     id: 'v-sound',
@@ -318,7 +318,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Very', word2: 'Berry', targetIpa: '/v/', comparisonIpa: '/b/' },
       { word1: 'Vest', word2: 'West', targetIpa: '/v/', comparisonIpa: '/w/' }
     ],
-    sentences: ["Victor loves the view.", "Five very loud voices."]
+    sentences: ["Victor loves the view.", "Five very loud voices.", "The van is very fast.", "Give the five gloves."]
   },
   {
     id: 'th-voiceless',
@@ -333,7 +333,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Think', word2: 'Sink', targetIpa: '/θ/', comparisonIpa: '/s/' },
       { word1: 'Three', word2: 'Free', targetIpa: '/θ/', comparisonIpa: '/f/' }
     ],
-    sentences: ["I think I saw three birds.", "Thank you for the bath."]
+    sentences: ["I think I saw three birds.", "Thank you for the bath.", "The thin path is north.", "Both teeth are healthy."]
   },
   {
     id: 'th-voiced',
@@ -348,7 +348,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'They', word2: 'Day', targetIpa: '/ð/', comparisonIpa: '/d/' },
       { word1: 'Then', word2: 'Den', targetIpa: '/ð/', comparisonIpa: '/d/' }
     ],
-    sentences: ["This is my brother.", "They went there."]
+    sentences: ["This is my brother.", "They went there.", "That is their father.", "Breathe with the weather."]
   },
   {
     id: 's-sound',
@@ -359,7 +359,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '舌尖靠近上齒齦但不接觸，吹出氣流。',
     commonMistakes: '氣流噴出位置不對。',
     animationState: 'neutral',
-    sentences: ["See the sun set.", "Six buses pass."]
+    sentences: ["See the sun set.", "Six buses pass.", "Sing a sad song.", "The glass is on the grass."]
   },
   {
     id: 'z-sound',
@@ -374,7 +374,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Zip', word2: 'Sip', targetIpa: '/z/', comparisonIpa: '/s/' },
       { word1: 'Buzz', word2: 'Bus', targetIpa: '/z/', comparisonIpa: '/s/' }
     ],
-    sentences: ["Zoe likes the zoo.", "A rose has a buzz."]
+    sentences: ["Zoe likes the zoo.", "A rose has a buzz.", "Zero is a size.", "The busy bees buzz."]
   },
   {
     id: 'sh-sound',
@@ -389,7 +389,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Ship', word2: 'Sip', targetIpa: '/ʃ/', comparisonIpa: '/s/' },
       { word1: 'Show', word2: 'Sew', targetIpa: '/ʃ/', comparisonIpa: '/s/' }
     ],
-    sentences: ["She sells seashells.", "Wash the fish."]
+    sentences: ["She sells seashells.", "Wash the fish.", "Show the short shoe.", "The shop is on the ship."]
   },
   {
     id: 'zh-sound',
@@ -400,7 +400,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '位置同 /ʃ/，但要帶動聲帶強烈震動。',
     commonMistakes: '常被唸成 /z/。',
     animationState: 'rounded',
-    sentences: ["Check your vision.", "Measure the pleasure."]
+    sentences: ["Check your vision.", "Measure the pleasure.", "Usual leisure time.", "A garage in the mirage."]
   },
   {
     id: 'h-sound',
@@ -411,7 +411,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '像在哈氣一樣，氣流輕輕呼出。',
     commonMistakes: '氣流太強。',
     animationState: 'open',
-    sentences: ["Hi, hold my hat.", "The house is hot."]
+    sentences: ["Hi, hold my hat.", "The house is hot.", "Help him hide.", "He has a heavy heart."]
   },
 
   // --- CONSONANTS - AFFRICATES (2) ---
@@ -428,7 +428,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Chair', word2: 'Share', targetIpa: '/tʃ/', comparisonIpa: '/ʃ/' },
       { word1: 'Cheap', word2: 'Sheep', targetIpa: '/tʃ/', comparisonIpa: '/ʃ/' }
     ],
-    sentences: ["Charlie chose the chair.", "Watch the match."]
+    sentences: ["Charlie chose the chair.", "Watch the match.", "Check the rich cheese.", "Each child has a peach."]
   },
   {
     id: 'dj-sound',
@@ -442,7 +442,7 @@ export const PHONEMES: PhonemeInfo[] = [
     minimalPairs: [
       { word1: 'Joke', word2: 'Choke', targetIpa: '/dʒ/', comparisonIpa: '/tʃ/' }
     ],
-    sentences: ["Jump for joy.", "The judge is old."]
+    sentences: ["Jump for joy.", "The judge is old.", "The large bridge is huge.", "Join the gym in June."]
   },
 
   // --- CONSONANTS - NASALS (3) ---
@@ -455,7 +455,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '雙唇緊閉，聲音從鼻子發出。',
     commonMistakes: '結尾音沒閉嘴。',
     animationState: 'neutral',
-    sentences: ["Mom made many meals.", "Me and my mouse."]
+    sentences: ["Mom made many meals.", "Me and my mouse.", "Make more money.", "The room is warm."]
   },
   {
     id: 'n-sound',
@@ -466,7 +466,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '舌尖抵住齒齦，氣流從鼻子發出。',
     commonMistakes: '與 /l/ 搞混。',
     animationState: 'tongue-up',
-    sentences: ["No, it is nice.", "Sun on the mountain."]
+    sentences: ["No, it is nice.", "Sun on the mountain.", "Nine new pens.", "Run in the rain."]
   },
   {
     id: 'ng-sound',
@@ -480,7 +480,7 @@ export const PHONEMES: PhonemeInfo[] = [
     minimalPairs: [
       { word1: 'Sing', word2: 'Sin', targetIpa: '/ŋ/', comparisonIpa: '/n/' }
     ],
-    sentences: ["Sing a long song.", "Bring the ring."]
+    sentences: ["Sing a long song.", "Bring the ring.", "The king is strong.", "Hang the long string."]
   },
 
   // --- CONSONANTS - APPROXIMANTS (4) ---
@@ -497,7 +497,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Light', word2: 'Right', targetIpa: '/l/', comparisonIpa: '/r/' },
       { word1: 'Fly', word2: 'Fry', targetIpa: '/l/', comparisonIpa: '/r/' }
     ],
-    sentences: ["Lily loves the light.", "Look at the little ball."]
+    sentences: ["Lily loves the light.", "Look at the little ball.", "Leaf on the lake.", "The tall wall is full."]
   },
   {
     id: 'r-sound',
@@ -512,7 +512,7 @@ export const PHONEMES: PhonemeInfo[] = [
       { word1: 'Read', word2: 'Lead', targetIpa: '/r/', comparisonIpa: '/l/' },
       { word1: 'Road', word2: 'Load', targetIpa: '/r/', comparisonIpa: '/l/' }
     ],
-    sentences: ["Run down the red road.", "Are you ready to race?"]
+    sentences: ["Run down the red road.", "Are you ready to race?", "Read the real story.", "The green grass is rare."]
   },
   {
     id: 'w-sound',
@@ -523,7 +523,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '嘴唇縮圓後迅速放鬆，像發 /uː/ 的開始。',
     commonMistakes: '唸成 /v/。',
     animationState: 'rounded',
-    sentences: ["We will win.", "The weather is wet."]
+    sentences: ["We will win.", "The weather is wet.", "Wait for the white whale.", "The wide world is wonderful."]
   },
   {
     id: 'j-sound',
@@ -534,7 +534,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '舌中抬高靠近硬顎，快速滑向後面的母音。',
     commonMistakes: '唸成 /dʒ/。',
     animationState: 'neutral',
-    sentences: ["Yes, you are right.", "Yellow and young."]
+    sentences: ["Yes, you are right.", "Yellow and young.", "Yesterday was your year.", "Use the yellow yarn."]
   },
 
   // --- SPECIAL (1) ---
@@ -547,7 +547,7 @@ export const PHONEMES: PhonemeInfo[] = [
     tips: '完全放鬆，極短促的「ㄜ」。',
     commonMistakes: '唸得太重或太清楚。',
     animationState: 'neutral',
-    sentences: ["About a soda.", "My teacher is nice."]
+    sentences: ["About a soda.", "My teacher is nice.", "A banana for dinner.", "The sofa is comfortable."]
   }
 ];
 
@@ -560,31 +560,41 @@ CORE PERSONALITY:
 - Goal: Help the student achieve a native-like "Sound Strong" accent through muscle-memory tips.
 
 ENCOURAGEMENT STYLES (Rotate these based on performance):
-1. **The Enthusiastic Coach**: 
+1. **The Enthusiastic Coach** (For great performance): 
    - "對！就是這個聲音！非常有精神喔！"
    - "太震撼了，這個噴氣音發得真到位！"
    - "哇！這個發音簡直是教科書等級的！"
    - "你的進步真的讓我太驚訝了，繼續保持這股氣勢！"
    - "太棒了！你已經掌握了這個音的精髓！"
    - "聽聽看這個聲音，多麼清脆有力！"
-2. **The High-Praise Mentor**: 
+   - "天啊！這聲音太好聽了，簡直是聲控的福音！"
+   - "這就是我們要的 Sound Strong 能量！"
+2. **The High-Praise Mentor** (For consistent accuracy): 
    - "簡直是母語人士等級！你的發音讓我都要給按個讚！"
    - "非常流利，聽起來非常自然。"
    - "這就是我們追求的 'Sound Strong' 精神！"
    - "聽起來非常有自信，這就是成功的關鍵！"
    - "你的語調非常有感染力，聽起來很舒服。"
    - "這是我今天聽到最完美的發音了！"
-3. **The Gentle Supporter**: 
+   - "你的耳朵一定很靈敏，才能抓到這麼細微的差別！"
+   - "這發音，我給 100 分，多一分怕你太驕傲！"
+3. **The Gentle Supporter** (When struggling): 
    - "很接近了喔！我們再放鬆一點點，再來挑戰一次吧。"
    - "沒關係，這是最難的一個音，慢慢練習一定會變強的！"
    - "別灰心，發音是肌肉記憶，多練幾次舌頭就會聽話了。"
    - "我們稍微調整一下嘴型，你一定可以做到的！"
    - "沒事沒事，我們放慢速度，先抓到那個感覺。"
    - "發音就像運動，需要一點時間暖身，再來一次！"
+   - "差一點點就完美了！我們把舌頭再往後縮一點試試？"
+   - "老師陪你一起練，這個音我們一定能攻克它！"
 
 DIAGNOSTIC GUIDELINES:
 - **Reference Context**: You MUST use the provided '發音祕訣' (Tips) and '常見錯誤' (Common Mistakes) to diagnose the student.
-- **Error Diagnosis**: If the student makes a mistake, check if it matches the '常見錯誤'. If it does, point it out explicitly: "聽起來你把 [單字] 唸成 [錯誤音] 了喔！這是常見的盲點。"
+- **Specific Feedback Structure**:
+    1. **Observation**: Start with what you heard.
+    2. **Diagnosis**: If there's an error, link it to the '常見錯誤'.
+    3. **Actionable Tip**: Use the '發音祕訣' to provide a physical correction.
+- **Error Diagnosis**: If the student makes a mistake, point it out explicitly: "聽起來你把 [單字] 唸成 [錯誤音] 了喔！這是常見的盲點。"
 - **Actionable Guidance**: Use the '發音祕訣' to give specific instructions: "試試看 [根據發音祕訣修正]，讓聲音更到位。"
 - **Muscle Memory**: Focus on physical descriptions (tongue position, lip shape, air flow).
 - **Minimal Pairs**: In comparison mode, explicitly check if the two words sound distinct. If they sound too similar, explain the muscle movement (e.g., "蝴蝶音要張得更大").
