@@ -40,6 +40,14 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [lastError, setLastError] = useState<string | null>(null);
   const [isKeySelected, setIsKeySelected] = useState<boolean>(true);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>('vowels');
+
+  const CATEGORY_LABELS: Record<string, { label: string, icon: string }> = {
+    vowels: { label: '母音 (Vowels)', icon: '👄' },
+    diphthongs: { label: '雙母音 (Diphthongs)', icon: '🗣️' },
+    consonants: { label: '子音 (Consonants)', icon: '🦷' },
+    special: { label: '特殊音 (Special)', icon: '✨' }
+  };
 
   // Check for API key selection on mount
   useEffect(() => {
@@ -121,6 +129,11 @@ const App: React.FC = () => {
 
   const cleanup = useCallback(() => {
     if (sessionRef.current) {
+      try {
+        sessionRef.current.close();
+      } catch (e) {
+        console.warn('Error closing session:', e);
+      }
       sessionRef.current = null;
     }
     if (scriptProcessorRef.current) {
@@ -131,7 +144,11 @@ const App: React.FC = () => {
       streamRef.current.getTracks().forEach(track => track.stop());
       streamRef.current = null;
     }
-    sourcesRef.current.forEach(source => source.stop());
+    sourcesRef.current.forEach(source => {
+      try {
+        source.stop();
+      } catch (e) {}
+    });
     sourcesRef.current.clear();
     setIsRecording(false);
     setIsAiSpeaking(false);
@@ -181,17 +198,19 @@ const App: React.FC = () => {
     }
 
     try {
-      // Use GEMINI_API_KEY as primary, fallback to API_KEY, then check VITE_ prefixed env vars
-      const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY || (import.meta.env?.VITE_GEMINI_API_KEY) || (import.meta.env?.VITE_API_KEY);
+      // Use the mapped VITE_GEMINI_API_KEY which is injected at build time by Vite
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
       
-      if (!apiKey) {
+      if (!apiKey || apiKey === "undefined") {
+        console.warn('API Key not found or invalid in environment variables.');
         if (window.aistudio) {
           await handleOpenSelectKey();
-          return; // Stop and wait for user to try again after selecting key
+          return;
         }
-        throw new Error('API Key is missing. Please check your environment configuration.');
+        throw new Error('API Key is missing. Please ensure you have set GEMINI_API_KEY in your Vercel Environment Variables and redeployed.');
       }
       
+      // Create a fresh instance for each connection to ensure latest key is used
       const ai = new GoogleGenAI({ apiKey });
       
       if (!audioContextRef.current) {
@@ -320,16 +339,24 @@ const App: React.FC = () => {
           onerror: (e) => {
             console.error('Gemini error:', e);
             let errorMessage = '連線發生錯誤 (Network Error)';
+            
             if (e instanceof Error) {
               errorMessage = e.message;
+            } else if (typeof e === 'string') {
+              errorMessage = e;
             } else if (typeof e === 'object' && e !== null) {
-              errorMessage = JSON.stringify(e);
+              // Try to extract a useful message from the error object
+              errorMessage = (e as any).message || (e as any).error || JSON.stringify(e);
             }
             
             // If it's a 404 or "not found", it might be a key issue
-            if (errorMessage.includes('Requested entity was not found') || errorMessage.includes('404')) {
+            if (errorMessage.includes('Requested entity was not found') || 
+                errorMessage.includes('404') || 
+                errorMessage.includes('API_KEY_INVALID')) {
               setIsKeySelected(false);
-              errorMessage = '找不到資源，請重新選擇 API Key。';
+              errorMessage = 'API Key 無效或找不到資源，請重新選擇或檢查 Vercel 設定。';
+            } else if (errorMessage.includes('Network error') || errorMessage.includes('failed to connect')) {
+              errorMessage = '網路連線失敗。請確認您的 API Key 是否為付費版 (Paid Tier)，Live API 目前僅支援付費版金鑰。';
             }
 
             setLastError(errorMessage);
@@ -434,28 +461,65 @@ const App: React.FC = () => {
                   placeholder="搜尋音標或單字..." 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-white border border-orange-100 text-sm focus:ring-2 focus:ring-orange-300 focus:border-orange-300 outline-none transition-all shadow-sm"
+                  className="w-full pl-10 pr-10 py-2.5 rounded-2xl bg-white border border-orange-100 text-sm focus:ring-2 focus:ring-orange-300 focus:border-orange-300 outline-none transition-all shadow-sm"
                 />
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 absolute left-3.5 top-3.5 text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
+                {searchQuery && (
+                  <button 
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3.5 top-3.5 text-orange-300 hover:text-orange-500 transition-colors"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
               </div>
 
-              <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-6">
+              <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-2">
                 {/* Fix: Cast categorizedPhonemes entries to preserve array types for PhonemeInfo items */}
-                {(Object.entries(categorizedPhonemes) as [string, PhonemeInfo[]][]).map(([key, list]) => (
-                  list.length > 0 && (
-                    <div key={key}>
-                      <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-3 flex items-center gap-2 sticky top-0 bg-white/80 backdrop-blur-md py-1 z-10">
-                        <span className="w-3 h-[2px] bg-orange-200"></span> 
-                        {key.toUpperCase()} ({list.length})
-                      </h3>
-                      <div className="grid grid-cols-1 gap-1.5">
-                        {list.map(renderPhonemeButton)}
-                      </div>
+                {(Object.entries(categorizedPhonemes) as [string, PhonemeInfo[]][]).map(([key, list]) => {
+                  const isExpanded = expandedCategory === key || searchQuery.trim() !== "";
+                  const category = CATEGORY_LABELS[key] || { label: key, icon: '📍' };
+                  
+                  return list.length > 0 && (
+                    <div key={key} className="border border-orange-50 rounded-2xl overflow-hidden transition-all duration-300">
+                      <button 
+                        onClick={() => setExpandedCategory(expandedCategory === key ? null : key)}
+                        className={`w-full flex items-center justify-between p-3 text-left transition-all ${
+                          isExpanded ? 'bg-orange-500 text-white' : 'bg-white text-gray-500 hover:bg-orange-50'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm">{category.icon}</span>
+                          <span className="text-[10px] font-black uppercase tracking-widest">{category.label}</span>
+                          <span className={`text-[8px] px-1.5 py-0.5 rounded-full font-bold ${isExpanded ? 'bg-white/20 text-white' : 'bg-orange-100 text-orange-600'}`}>
+                            {list.length}
+                          </span>
+                        </div>
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          className={`h-3 w-3 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} 
+                          fill="none" 
+                          viewBox="0 0 24 24" 
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      
+                      {isExpanded && (
+                        <div className="p-2 bg-white/50 animate-in slide-in-from-top-2 duration-300">
+                          <div className="grid grid-cols-1 gap-1">
+                            {list.map(renderPhonemeButton)}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )
-                ))}
+                  );
+                })}
                 {filteredPhonemes.length === 0 && (
                   <div className="text-center py-10">
                     <p className="text-xs font-bold text-gray-400">找不到相關音標 🔍</p>

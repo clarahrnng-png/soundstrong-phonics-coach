@@ -154,6 +154,61 @@ export const PHONEMES: PhonemeInfo[] = [
     animationState: 'neutral',
     sentences: ["The nurse is at work.", "Early bird gets the worm.", "Her shirt is dirty.", "Learn the first word."]
   },
+  {
+    id: 'vowel-er-unstressed',
+    ipa: '/ɚ/',
+    exampleWords: ['Teacher', 'Doctor', 'Sugar'],
+    type: PhonemeType.VOWEL,
+    description: '輕聲捲舌母音，出現在非重音節。',
+    tips: '發音像 /ə/ 但舌尖微微向上捲，非常輕短。',
+    commonMistakes: '常被唸成不捲舌的 /ə/。',
+    animationState: 'neutral',
+    sentences: ["My teacher is a doctor.", "Add some sugar to the water.", "The butter is in the center.", "Better later than never."]
+  },
+  {
+    id: 'vowel-ar',
+    ipa: '/ɑːr/',
+    exampleWords: ['Car', 'Farm', 'Heart'],
+    type: PhonemeType.VOWEL,
+    description: '大口捲舌母音。',
+    tips: '嘴巴先張大發 /ɑː/，結尾舌尖捲起。',
+    commonMistakes: '忘記捲舌，聽起來像單純的 /ɑː/。',
+    animationState: 'open',
+    sentences: ["Park the car on the farm.", "The star is far away.", "Start the hard work.", "He has a large heart."]
+  },
+  {
+    id: 'vowel-or',
+    ipa: '/ɔːr/',
+    exampleWords: ['Door', 'Short', 'Morning'],
+    type: PhonemeType.VOWEL,
+    description: '圓唇捲舌母音。',
+    tips: '嘴巴先縮圓發 /ɔː/，結尾舌尖捲起。',
+    commonMistakes: '捲舌不夠明顯。',
+    animationState: 'rounded',
+    sentences: ["Open the door in the morning.", "The story is short.", "Four horses on the floor.", "Born in the north."]
+  },
+  {
+    id: 'vowel-air',
+    ipa: '/ɛr/',
+    exampleWords: ['Air', 'Hair', 'Care'],
+    type: PhonemeType.VOWEL,
+    description: '開口捲舌母音。',
+    tips: '嘴巴微張發 /ɛ/，結尾舌尖捲起。',
+    commonMistakes: '常唸成 /eɪr/。',
+    animationState: 'neutral',
+    sentences: ["The air is fresh.", "Brush your hair with care.", "Where is the chair?", "There is a pair of bears."]
+  },
+  {
+    id: 'vowel-ear',
+    ipa: '/ɪr/',
+    exampleWords: ['Ear', 'Near', 'Deer'],
+    type: PhonemeType.VOWEL,
+    description: '閉口捲舌母音。',
+    tips: '嘴巴微張發 /ɪ/，結尾舌尖捲起。',
+    commonMistakes: '唸得太像 /iːr/。',
+    animationState: 'neutral',
+    sentences: ["I can hear with my ear.", "The deer is near.", "Clear the beer.", "Fear the spear."]
+  },
 
   // --- DIPHTHONGS (6) ---
   {
